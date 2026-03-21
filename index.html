@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WashFree | L'autolavaggio in abbonamento a Roma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .accordion-item.active .accordion-content { max-height: 200px; }
+        .accordion-item.active .fa-chevron-down { transform: rotate(180deg); }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="text-2xl font-bold text-blue-900">Wash<span class="text-orange-500">Free</span></div>
+            <a href="#pricing" class="bg-blue-900 text-white px-5 py-2 rounded-full font-semibold text-sm hover:bg-blue-800 transition">Inizia Ora</a>
+        </div>
+    </nav>
+
+    <section class="relative bg-blue-900 py-16 px-4 md:py-24 overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://www.transparenttextures.com/patterns/cubes.png" alt="pattern">
+        </div>
+        <div class="relative max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+                Lavi la tua auto a Roma <br><span class="text-sky-400">senza limiti.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+                Dimentica i gettoni e le code. Con un unico abbonamento mensile risparmi fino al 60% rispetto ai lavaggi singoli. Ideale per privati, Taxi e NCC.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#pricing" class="bg-orange-500 hover:bg-orange-600 text-white text-lg font-bold py-4 px-10 rounded-xl shadow-lg transform transition hover:scale-105">
+                    Entra in Lista d'Attesa
+                </a>
+                <button class="bg-transparent border-2 border-white text-white font-semibold py-4 px-10 rounded-xl hover:bg-white/10 transition">
+                    Scarica l'App
+                </button>
+            </div>
+            <p class="text-slate-400 mt-6 text-sm flex items-center justify-center gap-2">
+                <i class="fas fa-map-marker-alt"></i> Disponibile ora in oltre 40 punti a Roma
+            </p>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">Come Funziona WashFree</h2>
+        <div class="grid md:grid-cols-3 gap-12">
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-sky-100 text-sky-600 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl group-hover:bg-blue-900 group-hover:text-white transition-all">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">1. Scegli l'abbonamento</h3>
+                <p class="text-slate-600">Seleziona il piano più adatto alle tue esigenze, dal lavaggio basic al full-service.</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-sky-100 text-sky-600 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl group-hover:bg-blue-900 group-hover:text-white transition-all">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">2. Mostra il QR Code</h3>
+                <p class="text-slate-600">Arriva in uno dei nostri punti convenzionati e inquadra il codice tramite l'app.</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-20 h-20 bg-sky-100 text-sky-600 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl group-hover:bg-blue-900 group-hover:text-white transition-all">
+                    <i class="fas fa-car-side"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">3. Lava l'auto</h3>
+                <p class="text-slate-600">Il lavaggio parte all'istante. Niente contanti, niente attese alla cassa.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-20 bg-slate-100 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">Piani per ogni esigenza</h2>
+            <p class="text-center text-slate-600 mb-12">Disdici quando vuoi, nessun vincolo.</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-bold mb-2">Smart</h3>
+                    <p class="text-4xl font-extrabold mb-6">€19<span class="text-lg text-slate-400 font-normal">/mese</span></p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 4 Lavaggi Esterni</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Roma Centro & GRA</li>
+                        <li class="flex items-center gap-2 text-slate-400 italic"><i class="fas fa-times"></i> Pulizia Interni</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-xl border-2 border-blue-900 text-blue-900 font-bold hover:bg-blue-50 transition">Scegli Smart</button>
+                </div>
+                <div class="bg-blue-900 p-8 rounded-3xl shadow-xl transform scale-105 relative">
+                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-xs font-bold px-4 py-1 rounded-full uppercase">Il più scelto</span>
+                    <h3 class="text-xl font-bold mb-2 text-white">Premium</h3>
+                    <p class="text-4xl font-extrabold mb-6 text-white">€35<span class="text-lg text-blue-300 font-normal">/mese</span></p>
+                    <ul class="space-y-4 mb-8 text-blue-100">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-orange-400"></i> Lavaggi Illimitati</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-orange-400"></i> Cera Protettiva</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-orange-400"></i> Roma & Provincia</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-xl bg-orange-500 text-white font-bold hover:bg-orange-600 transition">Scegli Premium</button>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-bold mb-2 text-slate-900">Business (NCC/Taxi)</h3>
+                    <p class="text-4xl font-extrabold mb-6">€59<span class="text-lg text-slate-400 font-normal">/mese</span></p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Lavaggi Illimitati</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Interni inclusi (2/mese)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Fatturazione automatica</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-xl border-2 border-blue-900 text-blue-900 font-bold hover:bg-blue-50 transition">Scegli Business</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">Domande Frequenti</h2>
+        <div class="space-y-4">
+            <div class="accordion-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                <button class="w-full p-5 text-left font-bold flex justify-between items-center transition hover:bg-slate-50" onclick="toggleAccordion(this)">
+                    E se piove subito dopo il lavaggio?
+                    <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-5 text-slate-600 pt-0">
+                        Con l'abbonamento Premium e Business non hai pensieri: puoi tornare a lavare l'auto anche il giorno dopo senza costi aggiuntivi!
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                <button class="w-full p-5 text-left font-bold flex justify-between items-center transition hover:bg-slate-50" onclick="toggleAccordion(this)">
+                    L'abbonamento è legato alla targa?
+                    <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-5 text-slate-600 pt-0">
+                        Sì, ogni abbonamento è associato a una targa specifica per garantire la sicurezza e la velocità del servizio ai nostri partner.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                <button class="w-full p-5 text-left font-bold flex justify-between items-center transition hover:bg-slate-50" onclick="toggleAccordion(this)">
+                    Ci sono costi di attivazione?
+                    <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-5 text-slate-600 pt-0">
+                        Assolutamente no. Paghi solo il tuo canone mensile. Puoi annullare l'iscrizione in qualsiasi momento con un clic dall'app.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white pt-16 pb-8 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 border-b border-slate-800 pb-12">
+            <div>
+                <div class="text-3xl font-bold mb-6">Wash<span class="text-orange-500">Free</span></div>
+                <p class="text-slate-400 max-w-sm mb-6">La rivoluzione dell'autolavaggio a Roma. Pulizia, risparmio e tecnologia a portata di mano.</p>
+                <div class="flex gap-4 text-2xl">
+                    <a href="#" class="hover:text-sky-400 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-sky-400 transition"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-sky-400 transition"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="h-64 rounded-2xl overflow-hidden shadow-inner grayscale contrast-125">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d190029.0177218698!2d12.3959153!3d41.9099856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f6196f992864b%3A0x217d9d1c633f2477!2sRoma%20RM!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+        <p class="text-center text-slate-500 mt-8 text-sm">© 2024 WashFree S.r.l. - Made with ❤️ in Rome - P.IVA 1234567890</p>
+    </footer>
+
+    <script>
+        function toggleAccordion(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Chiudi tutti gli altri
+            document.querySelectorAll('.accordion-item').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Apri quello cliccato se non era già attivo
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
