@@ -1,3 +1,12 @@
+// FORZA LO SCROLL IN ALTO AL CARICAMENTO (Risolve il bug su Mobile)
+if ('scrollRestoration' in history) {
+    // Dice al browser di non ricaricare l'ultima posizione di scroll
+    history.scrollRestoration = 'manual';
+}
+
+// Assicura che la pagina parta dal pixel 0,0 non appena si carica
+window.scrollTo(0, 0);
+
 // Gestione dei Tab Pricing (Mese/Anno)
 function switchPricing(type) {
     const btnMese = document.getElementById('btn-mese');
