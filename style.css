@@ -68,3 +68,24 @@ body {
         filter: blur(0);
     }
 }
+
+/* --- ANIMAZIONE SOTTOTITOLO E BOTTONI HERO --- */
+/* Bersaglia il paragrafo e il div dei bottoni esattamente dove si trovano ora nell'HTML */
+.z-10 h1 + p,
+.z-10 h1 + p + div {
+    opacity: 0; /* Partono invisibili */
+    transform: translateY(20px); /* Partono leggermente spostati in basso */
+    
+    /* L'animazione dura 0.8s, ha una curva fluida e RIMANE visibile alla fine (forwards) */
+    animation: fadeUpReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    
+    /* Il ritardo magico: aspetta 1.8 secondi (il tempo che il titolo finisca) prima di partire */
+    animation-delay: 1.3s; 
+}
+
+@keyframes fadeUpReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
