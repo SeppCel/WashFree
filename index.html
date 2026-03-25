@@ -47,18 +47,39 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px -5px rgba(34, 211, 238, 0.2);
         }
+
+/* --- ANIMAZIONI SEQUENZIALI ANTI-PIOGGIA DINAMICHE --- */
+        .reveal-box {
+            opacity: 0;
+            transform: translateY(70px); /* Partono un po' più in basso */
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        
+        /* Stato quando sono visibili */
+        .reveal-box.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Effetto cascata SOLO in entrata (scendendo) */
+        .reveal-box.active:nth-child(1) { transition-delay: 0.1s; }
+        .reveal-box.active:nth-child(2) { transition-delay: 0.25s; }
+        .reveal-box.active:nth-child(3) { transition-delay: 0.4s; }
+        
+        /* Nessun delay in uscita (salendo), scompaiono fluide insieme */
+        .reveal-box:not(.active) { transition-delay: 0s; }
     </style>
 </head>
 <body class="antialiased">
 
     <header class="sticky top-0 z-50 bg-dark/90 backdrop-blur-sm border-b border-slate-800">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#" class="text-2xl font-extrabold text-white flex items-center gap-2">
+            <a href="#" class="text-2xl font-extrabold text-white flex items-center gap-1">
                 <i class="fas fa-car-on text-neon text-3xl"></i>
-                Roma<span class="text-neon">Wash</span>
+                Wash<span class="text-neon">Free</span>
             </a>
             <div class="flex items-center gap-4">
-                <a href="#partner" class="text-sm text-slate-400 hover:text-white transition">Area Partner</a>
                 <a href="#pricing" class="bg-neon text-dark font-bold px-5 py-2.5 rounded-full text-sm hover:bg-white transition shadow-lg">Inizia Ora</a>
             </div>
         </nav>
@@ -94,14 +115,14 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-10 text-center">
-                <div class="bg-dark p-10 rounded-3xl border border-slate-800 flex flex-col items-center">
+                <div class="reveal-box bg-dark p-10 rounded-3xl border border-slate-800 flex flex-col items-center">
                     <div class="w-20 h-20 rounded-full bg-neon/10 flex items-center justify-center border border-neon/30 mb-8">
                         <i class="fas fa-cloud-rain text-neon text-4xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-4">1. Prenota e Lava</h3>
                     <p class="text-slate-400">Scegli il tuo autolavaggio partner sull'app e procedi con il lavaggio programmato.</p>
                 </div>
-                <div class="bg-dark p-10 rounded-3xl border border-neon flex flex-col items-center relative shadow-lg shadow-neon/10">
+                <div class="reveal-box bg-dark p-10 rounded-3xl border border-neon flex flex-col items-center relative shadow-lg shadow-neon/10">
                     <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-neon text-dark text-xs font-bold px-4 py-1 rounded-full uppercase">Il Patto</span>
                     <div class="w-20 h-20 rounded-full bg-neon flex items-center justify-center border border-neon mb-8">
                         <i class="fas fa-clock text-dark text-4xl"></i>
@@ -109,7 +130,7 @@
                     <h3 class="text-xl font-bold mb-4 text-white">2. Piove entro 48h?</h3>
                     <p class="text-blue-100">Se il meteo ti tradisce entro due giorni dal lavaggio, non preoccuparti.</p>
                 </div>
-                <div class="bg-dark p-10 rounded-3xl border border-slate-800 flex flex-col items-center">
+                <div class="reveal-box bg-dark p-10 rounded-3xl border border-slate-800 flex flex-col items-center">
                     <div class="w-20 h-20 rounded-full bg-neon/10 flex items-center justify-center border border-neon/30 mb-8">
                         <i class="fas fa-car-burst text-neon text-4xl"></i>
                     </div>
@@ -243,27 +264,47 @@
             const pricePeriods = document.querySelectorAll('.price-period');
 
             if (type === 'mese') {
-                // Attiva Mese
                 btnMese.classList.add('bg-neon', 'text-dark', 'shadow-md');
                 btnMese.classList.remove('text-slate-400');
                 btnAnno.classList.remove('bg-neon', 'text-dark', 'shadow-md');
                 btnAnno.classList.add('text-slate-400');
 
-                // Aggiorna prezzi e periodi
                 priceValues.forEach(v => v.textContent = '€' + v.getAttribute('data-mese'));
                 pricePeriods.forEach(p => p.textContent = '/mese');
             } else {
-                // Attiva Anno
                 btnAnno.classList.add('bg-neon', 'text-dark', 'shadow-md');
                 btnAnno.classList.remove('text-slate-400');
                 btnMese.classList.remove('bg-neon', 'text-dark', 'shadow-md');
                 btnMese.classList.add('text-slate-400');
 
-                // Aggiorna prezzi e periodi
                 priceValues.forEach(v => v.textContent = '€' + v.getAttribute('data-anno'));
                 pricePeriods.forEach(p => p.textContent = '/anno');
             }
         }
+        // --- SCRIPT PER L'ANIMAZIONE DELLO SCROLL (SUPER DINAMICO) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Selezioniamo direttamente le singole box, non l'intera sezione
+            const boxes = document.querySelectorAll('.reveal-box');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Se la box entra nello schermo (scendendo)
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } 
+                    // Se la box esce dallo schermo (salendo o scendendo troppo)
+                    else {
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, {
+                threshold: 0.1, // Scatta appena il 10% della card è visibile
+                rootMargin: "0px 0px -15% 0px" // Fa scattare l'entrata/uscita leggermente prima del fondo pagina
+            });
+
+            // Osserva ogni singola box
+            boxes.forEach(box => observer.observe(box));
+        });
     </script>
 </body>
 </html>
