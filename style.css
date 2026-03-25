@@ -1,0 +1,70 @@
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: #0f172a; 
+    color: white; 
+}
+
+/* Custom Scrollbar per estetica minimal */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1e293b; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
+
+/* Animazione hover soft per le card pricing */
+.pricing-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(34, 211, 238, 0.2);
+}
+
+/* --- ANIMAZIONI SEQUENZIALI ANTI-PIOGGIA DINAMICHE --- */
+.reveal-box {
+    opacity: 0;
+    transform: translateY(70px); /* Partono un po' più in basso */
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity;
+}
+
+/* Stato quando sono visibili */
+.reveal-box.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Effetto cascata SOLO in entrata (scendendo) */
+.reveal-box.active:nth-child(1) { transition-delay: 0.1s; }
+.reveal-box.active:nth-child(2) { transition-delay: 0.25s; }
+.reveal-box.active:nth-child(3) { transition-delay: 0.4s; }
+
+/* Nessun delay in uscita (salendo), scompaiono fluide insieme */
+.reveal-box:not(.active) { transition-delay: 0s; }
+
+/* --- STILE BASE PER LE SINGOLE LETTERE (H1 Animato) --- */
+.letter {
+    display: inline-block;
+    opacity: 0;
+    transform: scale(1.5);
+    filter: blur(4px);
+    animation: zoomOutLetter 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Gestione degli spazi vuoti tra le parole */
+.letter.space {
+    width: 0.25em;
+}
+
+/* L'animazione di comparsa e zoom out */
+@keyframes zoomOutLetter {
+    0% {
+        opacity: 0;
+        transform: scale(1.5);
+        filter: blur(4px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}

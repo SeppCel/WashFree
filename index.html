@@ -14,9 +14,9 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: '#0f172a', // Blu Notte
-                        neon: '#22d3ee', // Ciano Neon
-                        'neon-hover': '#06b6d4', // Ciano Neon più scuro per hover
+                        dark: '#0f172a',
+                        neon: '#22d3ee',
+                        'neon-hover': '#06b6d4',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -30,46 +30,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
-        
-        /* Custom Scrollbar per estetica minimal */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1e293b; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
-
-        /* Animazione hover soft per le card */
-        .pricing-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(34, 211, 238, 0.2);
-        }
-
-/* --- ANIMAZIONI SEQUENZIALI ANTI-PIOGGIA DINAMICHE --- */
-        .reveal-box {
-            opacity: 0;
-            transform: translateY(70px); /* Partono un po' più in basso */
-            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-            will-change: transform, opacity;
-        }
-        
-        /* Stato quando sono visibili */
-        .reveal-box.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Effetto cascata SOLO in entrata (scendendo) */
-        .reveal-box.active:nth-child(1) { transition-delay: 0.1s; }
-        .reveal-box.active:nth-child(2) { transition-delay: 0.25s; }
-        .reveal-box.active:nth-child(3) { transition-delay: 0.4s; }
-        
-        /* Nessun delay in uscita (salendo), scompaiono fluide insieme */
-        .reveal-box:not(.active) { transition-delay: 0s; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased">
 
@@ -91,7 +52,8 @@
         <div class="relative max-w-7xl mx-auto text-center z-10">
             <span class="inline-block bg-neon/10 text-neon border border-neon/30 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider mb-6">Disponibile a Roma Centro & GRA</span>
             <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-tight tracking-tight">
-                L’auto sempre pulita,<br><span class="text-neon">anche se piove.</span>
+                <span class="split-text">L’auto sempre pulita,</span><br>
+                <span class="split-text text-neon">anche se piove.</span>
             </h1>
             <p class="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
                 Il primo abbonamento smart a Roma con <strong class="font-bold text-white">Patto Anti-Pioggia</strong> incluso. Gestisci tutto dall'app, lavi quando vuoi e risparmi fino al 50%.
@@ -245,7 +207,7 @@
                 <input type="email" placeholder="Inserisci la tua email migliore..." required class="flex-grow bg-transparent px-5 py-4 text-white placeholder-slate-500 outline-none rounded-xl focus:ring-2 focus:ring-neon/50 text-lg">
                 <button type="submit" class="bg-neon text-dark text-lg font-bold py-4 px-10 rounded-xl hover:bg-white transition whitespace-nowrap">
                     Voglio lo Sconto
-                </a>
+                </button>
             </form>
             <p class="text-xs text-slate-600 mt-5">Rispettiamo la tua privacy. Niente spam, promesso.</p>
         </div>
@@ -256,55 +218,6 @@
         <p class="mt-2">Made with <i class="fas fa-heart text-neon/50"></i> for clean cars in Rome.</p>
     </footer>
 
-    <script>
-        function switchPricing(type) {
-            const btnMese = document.getElementById('btn-mese');
-            const btnAnno = document.getElementById('btn-anno');
-            const priceValues = document.querySelectorAll('.price-value');
-            const pricePeriods = document.querySelectorAll('.price-period');
-
-            if (type === 'mese') {
-                btnMese.classList.add('bg-neon', 'text-dark', 'shadow-md');
-                btnMese.classList.remove('text-slate-400');
-                btnAnno.classList.remove('bg-neon', 'text-dark', 'shadow-md');
-                btnAnno.classList.add('text-slate-400');
-
-                priceValues.forEach(v => v.textContent = '€' + v.getAttribute('data-mese'));
-                pricePeriods.forEach(p => p.textContent = '/mese');
-            } else {
-                btnAnno.classList.add('bg-neon', 'text-dark', 'shadow-md');
-                btnAnno.classList.remove('text-slate-400');
-                btnMese.classList.remove('bg-neon', 'text-dark', 'shadow-md');
-                btnMese.classList.add('text-slate-400');
-
-                priceValues.forEach(v => v.textContent = '€' + v.getAttribute('data-anno'));
-                pricePeriods.forEach(p => p.textContent = '/anno');
-            }
-        }
-        // --- SCRIPT PER L'ANIMAZIONE DELLO SCROLL (SUPER DINAMICO) ---
-        document.addEventListener('DOMContentLoaded', () => {
-            // Selezioniamo direttamente le singole box, non l'intera sezione
-            const boxes = document.querySelectorAll('.reveal-box');
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    // Se la box entra nello schermo (scendendo)
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    } 
-                    // Se la box esce dallo schermo (salendo o scendendo troppo)
-                    else {
-                        entry.target.classList.remove('active');
-                    }
-                });
-            }, {
-                threshold: 0.1, // Scatta appena il 10% della card è visibile
-                rootMargin: "0px 0px -15% 0px" // Fa scattare l'entrata/uscita leggermente prima del fondo pagina
-            });
-
-            // Osserva ogni singola box
-            boxes.forEach(box => observer.observe(box));
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
