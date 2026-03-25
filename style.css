@@ -71,6 +71,7 @@ body {
 
 /* --- ANIMAZIONE SOTTOTITOLO E BOTTONI HERO --- */
 /* Bersaglia il paragrafo e il div dei bottoni esattamente dove si trovano ora nell'HTML */
+.z-10 > span,
 .z-10 h1 + p,
 .z-10 h1 + p + div {
     opacity: 0; /* Partono invisibili */

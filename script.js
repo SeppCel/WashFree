@@ -58,31 +58,47 @@ document.addEventListener('DOMContentLoaded', () => {
     boxes.forEach(box => observer.observe(box));
 });
 
-// SCRIPT PER L'ANIMAZIONE LETTERA PER LETTERA DEL TITOLO
+// SCRIPT PER L'ANIMAZIONE LETTERA PER LETTERA DEL TITOLO (FIX MOBILE)
 document.addEventListener('DOMContentLoaded', () => {
     const textBlocks = document.querySelectorAll('.split-text');
     let letterIndex = 0; // Contatore unico per far scorrere l'animazione tra le due righe
 
     textBlocks.forEach(block => {
-        const text = block.textContent; // Prende il testo originale
+        const text = block.textContent.trim(); // Prende il testo originale
         block.textContent = ''; // Svuota il contenitore temporaneamente
 
-        text.split('').forEach((char) => {
-            const span = document.createElement('span');
-            span.classList.add('letter');
-            
-            if (char === ' ') {
-                span.innerHTML = '&nbsp;';
-                span.classList.add('space');
-            } else {
-                span.textContent = char;
+        // 1. Dividiamo prima per parole, non per singole lettere
+        const words = text.split(' ');
+
+        words.forEach((word, wIndex) => {
+            // Creiamo un "guscio" per la parola che impedisce di spezzarla
+            const wordSpan = document.createElement('span');
+            wordSpan.style.display = 'inline-block';
+            wordSpan.style.whiteSpace = 'nowrap'; // <-- La magia che tiene unite le lettere
+
+            // 2. Ora dividiamo la parola in lettere
+            word.split('').forEach((char) => {
+                const charSpan = document.createElement('span');
+                charSpan.classList.add('letter');
+                charSpan.textContent = char;
+                
+                // Ritardo progressivo
+                charSpan.style.animationDelay = `${letterIndex * 0.03}s`;
+                letterIndex++;
+                
+                wordSpan.appendChild(charSpan);
+            });
+
+            block.appendChild(wordSpan);
+
+            // 3. Ripristiniamo lo spazio tra una parola e l'altra (tranne per l'ultima)
+            if (wIndex < words.length - 1) {
+                const spaceSpan = document.createElement('span');
+                spaceSpan.innerHTML = '&nbsp;';
+                spaceSpan.classList.add('space');
+                letterIndex++; // Facciamo contare anche lo spazio nel ritardo per fluidità
+                block.appendChild(spaceSpan);
             }
-            
-            // Ritardo progressivo: 0.03s tra una lettera e l'altra (molto rapido!)
-            span.style.animationDelay = `${letterIndex * 0.03}s`;
-            letterIndex++;
-            
-            block.appendChild(span);
         });
     });
 });
