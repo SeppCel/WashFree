@@ -1,11 +1,22 @@
-// FORZA LO SCROLL IN ALTO AL CARICAMENTO (Risolve il bug su Mobile)
+
+// FORZA LO SCROLL IN ALTO AL CARICAMENTO (Hack definitivo per Mobile e Hash URL)
 if ('scrollRestoration' in history) {
-    // Dice al browser di non ricaricare l'ultima posizione di scroll
     history.scrollRestoration = 'manual';
 }
 
-// Assicura che la pagina parta dal pixel 0,0 non appena si carica
+// 1. Se c'è un # qualcosa nell'URL (es: #pricing), lo pulisce in modo invisibile
+if (window.location.hash) {
+    history.replaceState(null, null, window.location.pathname + window.location.search);
+}
+
+// 2. Forza lo scroll in alto subito...
 window.scrollTo(0, 0);
+
+// 3. ... e lo forza di nuovo una frazione di secondo dopo per battere i browser testardi (es. Safari iOS)
+setTimeout(() => {
+    window.scrollTo(0, 0);
+}, 50);
+
 
 // Gestione dei Tab Pricing (Mese/Anno)
 function switchPricing(type) {
