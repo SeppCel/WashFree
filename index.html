@@ -1,138 +1,269 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WashFree | L'autolavaggio in abbonamento a Roma</title>
+    <title>RomaWash | L'Autolavaggio Smart in Abbonamento a Roma con Patto Anti-Pioggia</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="bg-slate-50 text-slate-900">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <nav class="navbar">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="text-2xl font-bold text-blue-900">Wash<span class="text-orange-500">Free</span></div>
-            <a href="#pricing" class="cta-nav">Inizia Ora</a>
-        </div>
-    </nav>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0f172a', // Blu Notte
+                        neon: '#22d3ee', // Ciano Neon
+                        'neon-hover': '#06b6d4', // Ciano Neon più scuro per hover
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-    <section id="hero" class="relative bg-blue-900 px-4 overflow-hidden">
-        <div class="hero-pattern"></div>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
         
-        <div class="relative max-w-7xl mx-auto text-center">
-            <h1 class="hero-title">
-                Wash<span class="text-orange-500">Free</span>
-            </h1>
+        /* Custom Scrollbar per estetica minimal */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
 
-            <div id="scroll-reveal-group" class="reveal-content">
-                <p class="hero-slogan">
-                    <span class="slogan-highlight">Lavi la tua auto a Roma senza limiti.</span>
-                    Dimentica i gettoni e le code. Con un unico abbonamento mensile risparmi fino al 60%. Ideale per privati, Taxi e NCC.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#pricing" class="btn-primary">Entra in Lista d'Attesa</a>
-                    <button class="btn-secondary">Scarica l'App</button>
-                </div>
-                
-                <p class="text-slate-400 mt-8 text-sm flex items-center justify-center gap-2">
-                    <i class="fas fa-map-marker-alt text-orange-500"></i> Disponibile ora in oltre 40 punti a Roma
-                </p>
+        /* Animazione hover soft per le card */
+        .pricing-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(34, 211, 238, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="sticky top-0 z-50 bg-dark/90 backdrop-blur-sm border-b border-slate-800">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="text-2xl font-extrabold text-white flex items-center gap-2">
+                <i class="fas fa-car-on text-neon text-3xl"></i>
+                Roma<span class="text-neon">Wash</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="#partner" class="text-sm text-slate-400 hover:text-white transition">Area Partner</a>
+                <a href="#pricing" class="bg-neon text-dark font-bold px-5 py-2.5 rounded-full text-sm hover:bg-white transition shadow-lg">Inizia Ora</a>
             </div>
-        </div>
+        </nav>
+    </header>
 
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down text-2xl"></i>
+    <section class="relative bg-dark py-24 md:py-32 px-6 overflow-hidden border-b border-slate-800">
+        <div class="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/micro-carbon.png')]"></div>
+        
+        <div class="relative max-w-7xl mx-auto text-center z-10">
+            <span class="inline-block bg-neon/10 text-neon border border-neon/30 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider mb-6">Disponibile a Roma Centro & GRA</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-tight tracking-tight">
+                L’auto sempre pulita,<br><span class="text-neon">anche se piove.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+                Il primo abbonamento smart a Roma con <strong class="font-bold text-white">Patto Anti-Pioggia</strong> incluso. Gestisci tutto dall'app, lavi quando vuoi e risparmi fino al 50%.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6 items-center">
+                <a href="#pricing" class="bg-neon text-dark text-lg font-bold py-4 px-12 rounded-xl shadow-neon transition hover:bg-white hover:scale-105 transform">
+                    Scopri i Piani
+                </a>
+                <a href="#waitlist" class="text-slate-400 hover:text-white flex items-center gap-2 transition group">
+                    Iscriviti alla Lista d'Attesa <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
         </div>
     </section>
 
-    
-    <section id="pricing" class="py-20 bg-slate-100 px-4">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-blue-900 mb-4">Piani per ogni esigenza</h2>
-            <p class="text-lg text-slate-600">Nessun contratto a lungo termine. Cambia o disdici quando vuoi.</p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8 items-center">
-            <div class="pricing-card">
-                <h3 class="plan-name text-slate-900">Smart</h3>
-                <div class="plan-price text-slate-900">€19<span class="price-period">/mese</span></div>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check"></i> 4 Lavaggi Esterni</li>
-                    <li><i class="fas fa-check"></i> Roma Centro & GRA</li>
-                    <li class="feature-disabled"><i class="fas fa-times"></i> Pulizia Interni</li>
-                    <li class="feature-disabled"><i class="fas fa-times"></i> Cera Protettiva</li>
-                </ul>
-                <button class="btn-card-outline">Scegli Smart</button>
+    <section id="anti-pioggia" class="py-24 px-6 bg-slate-950/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-white mb-4">Dimentica il meteo. <span class="text-neon">Ci pensiamo noi.</span></h2>
+                <p class="text-lg text-slate-400 max-w-2xl mx-auto">Il Patto Anti-Pioggia è la nostra promessa: la tua auto merita di splendere, sempre.</p>
             </div>
-
-            <div class="pricing-card featured">
-                <span class="badge-featured">Il più scelto</span>
-                <h3 class="plan-name text-white">Premium</h3>
-                <div class="plan-price text-white">€35<span class="price-period text-blue-200">/mese</span></div>
-                <ul class="plan-features text-blue-50">
-                    <li><i class="fas fa-check text-orange-400"></i> <strong>Lavaggi Illimitati</strong></li>
-                    <li><i class="fas fa-check text-orange-400"></i> Cera Protettiva</li>
-                    <li><i class="fas fa-check text-orange-400"></i> Roma & Provincia</li>
-                    <li><i class="fas fa-check text-orange-400"></i> Priorità in coda</li>
-                </ul>
-                <button class="btn-card-filled">Scegli Premium</button>
-            </div>
-
-            <div class="pricing-card">
-                <h3 class="plan-name text-slate-900">Business</h3>
-                <p class="text-xs text-blue-600 font-bold uppercase mb-4 tracking-wider">Per Taxi e NCC</p>
-                <div class="plan-price text-slate-900">€59<span class="price-period">/mese</span></div>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check"></i> Lavaggi Illimitati</li>
-                    <li><i class="fas fa-check"></i> 2 Pulizie Interni/mese</li>
-                    <li><i class="fas fa-check"></i> Fatturazione automatica</li>
-                    <li><i class="fas fa-check"></i> Multi-targa (fino a 2)</li>
-                </ul>
-                <button class="btn-card-outline">Scegli Business</button>
+            
+            <div class="grid md:grid-cols-3 gap-10 text-center">
+                <div class="bg-dark p-10 rounded-3xl border border-slate-800 flex flex-col items-center">
+                    <div class="w-20 h-20 rounded-full bg-neon/10 flex items-center justify-center border border-neon/30 mb-8">
+                        <i class="fas fa-cloud-rain text-neon text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">1. Prenota e Lava</h3>
+                    <p class="text-slate-400">Scegli il tuo autolavaggio partner sull'app e procedi con il lavaggio programmato.</p>
+                </div>
+                <div class="bg-dark p-10 rounded-3xl border border-neon flex flex-col items-center relative shadow-lg shadow-neon/10">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-neon text-dark text-xs font-bold px-4 py-1 rounded-full uppercase">Il Patto</span>
+                    <div class="w-20 h-20 rounded-full bg-neon flex items-center justify-center border border-neon mb-8">
+                        <i class="fas fa-clock text-dark text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">2. Piove entro 48h?</h3>
+                    <p class="text-blue-100">Se il meteo ti tradisce entro due giorni dal lavaggio, non preoccuparti.</p>
+                </div>
+                <div class="bg-dark p-10 rounded-3xl border border-slate-800 flex flex-col items-center">
+                    <div class="w-20 h-20 rounded-full bg-neon/10 flex items-center justify-center border border-neon/30 mb-8">
+                        <i class="fas fa-car-burst text-neon text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">3. Lavaggio Extra Gratis</h3>
+                    <p class="text-slate-400">L'app ti accredita automaticamente un lavaggio omaggio da usare subito.</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-<script>
-    // 1. Reveal Hero (come prima)
-    window.addEventListener('scroll', function() {
-        const revealGroup = document.getElementById('scroll-reveal-group');
-        if (window.scrollY > 60) {
-            revealGroup.classList.add('active');
-        } else {
-            revealGroup.classList.remove('active');
-        }
-    });
-
-    // 2. Fallback per browser che non supportano CSS Scroll-Timeline
-    if (!CSS.supports('animation-timeline', 'view()')) {
-        const cards = document.querySelectorAll('.pricing-card');
-        
-        window.addEventListener('scroll', () => {
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const viewHeight = window.innerHeight;
+    <section id="pricing" class="py-24 px-6 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-white mb-4">Un piano per ogni guidatore</h2>
+                <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-10">Trasparente, flessibile, senza vincoli. Cancelli quando vuoi.</p>
                 
-                // Calcola la percentuale di visibilità per simulare l'effetto roll-dependance
-                if (rect.top < viewHeight && rect.bottom > 0) {
-                    const scrollPercent = (viewHeight - rect.top) / (viewHeight * 0.8);
-                    const drive = Math.min(Math.max(scrollPercent, 0), 1);
-                    
-                    card.style.opacity = drive;
-                    card.style.transform = `translateX(${(1 - drive) * 150}px)`;
-                }
-            });
-        });
-    }
-</script>
+                <div class="inline-flex bg-slate-900 border border-slate-700 p-1.5 rounded-full items-center">
+                    <button id="btn-mese" class="px-6 py-2.5 rounded-full text-sm font-semibold transition bg-neon text-dark shadow-md" onclick="switchPricing('mese')">Mese</button>
+                    <button id="btn-anno" class="px-6 py-2.5 rounded-full text-sm font-semibold transition text-slate-400 hover:text-white" onclick="switchPricing('anno')">Anno <span class="text-xs text-neon font-bold">-15%</span></button>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+                <div class="pricing-card bg-slate-950 p-8 rounded-3xl border border-slate-800 flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-300 mb-2">BASIC</h3>
+                    <p class="text-slate-500 text-sm mb-6 flex-grow">Per chi lava l'auto saltuariamente.</p>
+                    <div class="price-container mb-8">
+                        <span class="text-5xl font-extrabold text-white price-value" data-mese="14,90" data-anno="152,00">€14,90</span>
+                        <span class="text-slate-500 text-sm price-period">/mese</span>
+                    </div>
+                    <ul class="space-y-4 text-slate-400 text-sm mb-10">
+                        <li><i class="fas fa-check text-neon mr-2"></i> 2 Lavaggi/mese</li>
+                        <li><i class="fas fa-check text-neon mr-2"></i> Rete Partner Base</li>
+                        <li class="line-through text-slate-600"><i class="fas fa-times mr-2.5"></i> Recupero Pioggia</li>
+                    </ul>
+                    <a href="#waitlist" class="w-full text-center bg-slate-800 text-white font-semibold py-3 rounded-lg hover:bg-slate-700 transition">Scegli Basic</a>
+                </div>
 
+                <div class="pricing-card bg-dark p-8 rounded-3xl border-2 border-neon flex flex-col relative shadow-lg shadow-neon/10 transform scale-105">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-neon text-dark text-xs font-bold px-4 py-1 rounded-full uppercase">IL PIÙ SCELTO</span>
+                    <h3 class="text-xl font-bold text-neon mb-2">SMART</h3>
+                    <p class="text-blue-100 text-sm mb-6 flex-grow">Equilibrio perfetto per la città.</p>
+                    <div class="price-container mb-8">
+                        <span class="text-5xl font-extrabold text-white price-value" data-mese="24,90" data-anno="254,00">€24,90</span>
+                        <span class="text-slate-500 text-sm price-period">/mese</span>
+                    </div>
+                    <ul class="space-y-4 text-blue-100 text-sm mb-10">
+                        <li><i class="fas fa-check text-neon mr-2"></i> <strong>4 Lavaggi/mese</strong></li>
+                        <li><i class="fas fa-check text-neon mr-2"></i> Rete Partner Completa</li>
+                        <li><i class="fas fa-check text-neon mr-2"></i> <strong>1 Ricarica Anti-Pioggia</strong>/mese</li>
+                    </ul>
+                    <a href="#waitlist" class="w-full text-center bg-neon text-dark font-bold py-3 rounded-lg hover:bg-white transition">Scegli Smart</a>
+                </div>
 
+                <div class="pricing-card bg-slate-950 p-8 rounded-3xl border border-slate-800 flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-300 mb-2">PREMIUM</h3>
+                    <p class="text-slate-500 text-sm mb-6 flex-grow">Auto sempre perfetta, senza pensieri.</p>
+                    <div class="price-container mb-8">
+                        <span class="text-5xl font-extrabold text-white price-value" data-mese="39,90" data-anno="407,00">€39,90</span>
+                        <span class="text-slate-500 text-sm price-period">/mese</span>
+                    </div>
+                    <ul class="space-y-4 text-slate-400 text-sm mb-10">
+                        <li><i class="fas fa-check text-neon mr-2"></i> 8 Lavaggi/mese</li>
+                        <li><i class="fas fa-check text-neon mr-2"></i> Accesso Priority</li>
+                        <li><i class="fas fa-check text-neon mr-2"></i> <strong>Anti-Pioggia Illimitato</strong></li>
+                        <li><i class="fas fa-check text-neon mr-2"></i> Pulizia Interni (1/mese)</li>
+                    </ul>
+                    <a href="#waitlist" class="w-full text-center bg-slate-800 text-white font-semibold py-3 rounded-lg hover:bg-slate-700 transition">Scegli Premium</a>
+                </div>
+
+                <div class="pricing-card bg-slate-950 p-8 rounded-3xl border border-slate-800 flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-300 mb-2">BUSINESS</h3>
+                    <p class="text-slate-500 text-sm mb-6 flex-grow">Soluzione per P.IVA, Taxi e NCC.</p>
+                    <div class="price-container mb-8">
+                        <span class="text-5xl font-extrabold text-white price-value" data-mese="69,90" data-anno="713,00">€69,90</span>
+                        <span class="text-slate-500 text-sm price-period">/mese</span>
+                    </div>
+                    <ul class="space-y-4 text-slate-400 text-sm mb-10">
+                        <li><i class="fas fa-check text-neon mr-2"></i> 15 Lavaggi/mese</li>
+                        <li><i class="fas fa-check text-neon mr-2"></i> <strong>Fatturazione automatica</strong></li>
+                        <li><i class="fas fa-check text-neon mr-2"></i> Multi-targa (fino a 3)</li>
+                        <li><i class="fas fa-check text-neon mr-2"></i> Pulizia Interni (2/mese)</li>
+                    </ul>
+                    <a href="#waitlist" class="w-full text-center bg-slate-800 text-white font-semibold py-3 rounded-lg hover:bg-slate-700 transition">Parla con noi</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partner" class="py-24 px-6 bg-slate-950/50 border-t border-slate-800">
+        <div class="max-w-5xl mx-auto bg-dark p-12 rounded-3xl border border-slate-800 flex flex-col md:flex-row items-center gap-10 shadow-xl">
+            <div class="flex-grow text-center md:text-left">
+                <h2 class="text-3xl font-extrabold text-white mb-4">Hai un impianto di autolavaggio?</h2>
+                <p class="text-lg text-slate-400 max-w-2xl mb-2">Unisciti alla rete RomaWash. Aumenta i tuoi ricavi garantiti e attira nuovi clienti digitali senza sforzo.</p>
+                <p class="text-sm text-neon font-mono">Nessun costo fisso d'ingresso.</p>
+            </div>
+            <a href="mailto:partner@romawash.it" class="bg-white text-dark text-lg font-bold py-4 px-10 rounded-xl whitespace-nowrap hover:bg-neon transition shadow-md">
+                Diventa Partner
+            </a>
+        </div>
+    </section>
+
+    <section id="waitlist" class="py-24 px-6 bg-dark border-t border-slate-800">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="w-20 h-20 rounded-full bg-neon/10 flex items-center justify-center border border-neon/30 mb-8 mx-auto">
+                <i class="fas fa-rocket text-neon text-4xl"></i>
+            </div>
+            <h2 class="text-4xl font-extrabold text-white mb-4">RomaWash sta arrivando.</h2>
+            <p class="text-xl text-slate-300 mb-12 font-light">Lanceremo l'app tra poche settimane. Iscriviti alla lista d'attesa per ottenere il <strong class="text-neon">10% di sconto extra</strong> sul primo mese di qualsiasi piano.</p>
+            
+            <form class="flex flex-col sm:flex-row gap-4 bg-slate-900 p-3 rounded-2xl border border-slate-700 shadow-inner">
+                <input type="email" placeholder="Inserisci la tua email migliore..." required class="flex-grow bg-transparent px-5 py-4 text-white placeholder-slate-500 outline-none rounded-xl focus:ring-2 focus:ring-neon/50 text-lg">
+                <button type="submit" class="bg-neon text-dark text-lg font-bold py-4 px-10 rounded-xl hover:bg-white transition whitespace-nowrap">
+                    Voglio lo Sconto
+                </a>
+            </form>
+            <p class="text-xs text-slate-600 mt-5">Rispettiamo la tua privacy. Niente spam, promesso.</p>
+        </div>
+    </section>
+
+    <footer class="py-10 px-6 border-t border-slate-800 bg-slate-950 text-center text-slate-600 text-sm">
+        <p>&copy; 2024 RomaWash S.r.l. - Via del Corso 123, Roma. P.IVA 12345678901</p>
+        <p class="mt-2">Made with <i class="fas fa-heart text-neon/50"></i> for clean cars in Rome.</p>
+    </footer>
+
+    <script>
+        function switchPricing(type) {
+            const btnMese = document.getElementById('btn-mese');
+            const btnAnno = document.getElementById('btn-anno');
+            const priceValues = document.querySelectorAll('.price-value');
+            const pricePeriods = document.querySelectorAll('.price-period');
+
+            if (type === 'mese') {
+                // Attiva Mese
+                btnMese.classList.add('bg-neon', 'text-dark', 'shadow-md');
+                btnMese.classList.remove('text-slate-400');
+                btnAnno.classList.remove('bg-neon', 'text-dark', 'shadow-md');
+                btnAnno.classList.add('text-slate-400');
+
+                // Aggiorna prezzi e periodi
+                priceValues.forEach(v => v.textContent = '€' + v.getAttribute('data-mese'));
+                pricePeriods.forEach(p => p.textContent = '/mese');
+            } else {
+                // Attiva Anno
+                btnAnno.classList.add('bg-neon', 'text-dark', 'shadow-md');
+                btnAnno.classList.remove('text-slate-400');
+                btnMese.classList.remove('bg-neon', 'text-dark', 'shadow-md');
+                btnMese.classList.add('text-slate-400');
+
+                // Aggiorna prezzi e periodi
+                priceValues.forEach(v => v.textContent = '€' + v.getAttribute('data-anno'));
+                pricePeriods.forEach(p => p.textContent = '/anno');
+            }
+        }
+    </script>
 </body>
 </html>
