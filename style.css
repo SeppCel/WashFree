@@ -90,3 +90,13 @@ body {
         transform: translateY(0);
     }
 }
+
+/* --- ANIMAZIONI MODAL LOGIN --- */
+#auth-modal.modal-active {
+    display: flex;
+    opacity: 1;
+}
+
+#auth-modal.modal-active #auth-box {
+    transform: scale(1);
+}

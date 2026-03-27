@@ -113,3 +113,64 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+// --- SCRIPT PER IL MODAL DI LOGIN / REGISTRAZIONE ---
+document.addEventListener('DOMContentLoaded', () => {
+    const openBtn = document.getElementById('open-login-btn');
+    const closeBtn = document.getElementById('close-login-btn');
+    const modal = document.getElementById('auth-modal');
+    
+    // Elementi dinamici del form
+    const toggleModeBtn = document.getElementById('toggle-auth-mode');
+    const authTitle = document.getElementById('auth-title');
+    const authSubtitle = document.getElementById('auth-subtitle');
+    const authSubmitBtn = document.getElementById('auth-submit-btn');
+    const authToggleText = document.getElementById('auth-toggle-text');
+    const nameField = document.getElementById('name-field');
+    
+    let isLoginMode = true;
+
+    // Apri Modal
+    openBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        // Piccolo ritardo per permettere al display:flex di applicarsi prima dell'opacità
+        setTimeout(() => modal.classList.add('modal-active'), 10);
+    });
+
+    // Chiudi Modal
+    const closeModal = () => {
+        modal.classList.remove('modal-active');
+        setTimeout(() => modal.classList.add('hidden'), 300); // Aspetta la fine della transizione
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+
+    // Chiudi se si clicca fuori dal riquadro
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // Toggle tra Login e Registrazione
+    toggleModeBtn.addEventListener('click', () => {
+        isLoginMode = !isLoginMode;
+        
+        if (isLoginMode) {
+            // Modalità Login
+            authTitle.textContent = 'Bentornato';
+            authSubtitle.textContent = 'Inserisci i tuoi dati per accedere.';
+            authSubmitBtn.textContent = 'Accedi';
+            authToggleText.textContent = 'Non hai un account?';
+            toggleModeBtn.textContent = 'Registrati';
+            nameField.classList.add('hidden'); // Nasconde il campo Nome
+        } else {
+            // Modalità Registrazione
+            authTitle.textContent = 'Crea Account';
+            authSubtitle.textContent = 'Inizia a lavare la tua auto in modo smart.';
+            authSubmitBtn.textContent = 'Registrati Ora';
+            authToggleText.textContent = 'Hai già un account?';
+            toggleModeBtn.textContent = 'Accedi';
+            nameField.classList.remove('hidden'); // Mostra il campo Nome
+        }
+    });
+});
