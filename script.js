@@ -224,3 +224,78 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+// --- LOGICA SPA: NAVIGAZIONE PRENOTAZIONE ---
+document.addEventListener('DOMContentLoaded', () => {
+    const openBookingBtn = document.getElementById('open-booking-btn');
+    const backToDashboardBtn = document.getElementById('back-to-dashboard-btn');
+    const dashboardView = document.getElementById('dashboard-view');
+    const bookingView = document.getElementById('booking-view');
+
+    // Vai a Prenotazione
+    if (openBookingBtn) {
+        openBookingBtn.addEventListener('click', () => {
+            dashboardView.classList.add('hidden');
+            bookingView.classList.remove('hidden');
+            bookingView.classList.add('fade-in'); // Usa l'animazione creata in precedenza
+            window.scrollTo(0, 0);
+        });
+    }
+
+    // Torna alla Dashboard
+    if (backToDashboardBtn) {
+        backToDashboardBtn.addEventListener('click', () => {
+            bookingView.classList.add('hidden');
+            dashboardView.classList.remove('hidden');
+            dashboardView.classList.add('fade-in');
+            window.scrollTo(0, 0);
+        });
+    }
+});
+
+
+// --- LOGICA SPA: NAVIGAZIONE IMPOSTAZIONI ---
+document.addEventListener('DOMContentLoaded', () => {
+    const openSettingsBtn = document.getElementById('open-settings-btn');
+    const backFromSettingsBtn = document.getElementById('back-from-settings-btn');
+    const dashboardView = document.getElementById('dashboard-view');
+    const settingsView = document.getElementById('settings-view');
+    const settingsLogoutBtn = document.getElementById('settings-logout-btn');
+    const landingView = document.getElementById('landing-view');
+
+    // Vai a Impostazioni
+    if (openSettingsBtn) {
+        openSettingsBtn.addEventListener('click', () => {
+            dashboardView.classList.add('hidden');
+            settingsView.classList.remove('hidden');
+            settingsView.classList.add('fade-in');
+            window.scrollTo(0, 0);
+        });
+    }
+
+    // Torna alla Dashboard
+    if (backFromSettingsBtn) {
+        backFromSettingsBtn.addEventListener('click', () => {
+            settingsView.classList.add('hidden');
+            dashboardView.classList.remove('hidden');
+            dashboardView.classList.add('fade-in');
+            window.scrollTo(0, 0);
+        });
+    }
+
+    // Tasto Logout dalle Impostazioni
+    if (settingsLogoutBtn) {
+        settingsLogoutBtn.addEventListener('click', () => {
+            // Nasconde Impostazioni, mostra Landing
+            settingsView.classList.add('hidden');
+            landingView.classList.remove('hidden');
+            landingView.classList.add('fade-in');
+            window.scrollTo(0, 0);
+
+            setTimeout(() => {
+                landingView.classList.remove('fade-in');
+            }, 500);
+        });
+    }
+});

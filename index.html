@@ -284,7 +284,7 @@
                 <div class="flex items-center gap-5">
                     <button id="logout-btn" class="text-xs font-bold text-slate-500 hover:text-neon uppercase tracking-widest transition">Torna alla home</button>
                     <button class="text-slate-400 hover:text-white transition"><i class="fas fa-bell text-xl"></i></button>
-                    <div class="w-10 h-10 rounded-full border-2 border-neon flex items-center justify-center bg-slate-800 cursor-pointer hover:bg-slate-700 transition">
+                    <div id="open-settings-btn" class="w-10 h-10 rounded-full border-2 border-neon flex items-center justify-center bg-slate-800 cursor-pointer hover:bg-slate-700 transition">
                         <i class="fas fa-user text-neon"></i>
                     </div>
                 </div>
@@ -299,7 +299,7 @@
                     <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Ciao, Edoardo! 👋</h1>
                     <p class="text-slate-400">La tua auto è pronta per splendere. Cosa facciamo oggi?</p>
                 </div>
-                <button class="bg-neon text-dark font-bold px-8 py-4 rounded-xl shadow-neon transition hover:bg-white flex items-center justify-center gap-2">
+                <button id="open-booking-btn" class="bg-neon text-dark font-bold px-8 py-4 rounded-xl shadow-neon transition hover:bg-white flex items-center justify-center gap-2">
                     <i class="fas fa-plus"></i> Prenota Lavaggio
                 </button>
             </div>
@@ -362,6 +362,166 @@
                     </div>
                     <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-bold px-3 py-1 rounded-full">Completato</span>
                 </div>
+            </div>
+
+        </main>
+    </div>
+
+    <div id="booking-view" class="hidden min-h-screen bg-dark pb-24">
+        
+        <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
+            <nav class="max-w-xl mx-auto px-6 py-4 flex items-center justify-between">
+                <button id="back-to-dashboard-btn" class="text-slate-400 hover:text-white transition w-10 h-10 flex items-center justify-start">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </button>
+                <h2 class="text-xl font-bold text-white">Nuova Prenotazione</h2>
+                <div class="w-10"></div> </nav>
+        </header>
+
+        <main class="max-w-xl mx-auto px-6 py-8">
+            
+            <div class="mb-8">
+                <h3 class="text-lg font-bold text-white mb-4">1. Scegli il giorno</h3>
+                <div class="flex gap-4 overflow-x-auto pb-4 snap-x hide-scrollbar">
+                    
+                    <div class="booking-option flex-shrink-0 w-20 h-24 rounded-2xl border-2 border-slate-700 bg-slate-900 flex flex-col items-center justify-center cursor-pointer snap-center transition hover:border-neon/50">
+                        <span class="text-slate-400 text-xs font-semibold uppercase mb-1">Oggi</span>
+                        <span class="text-2xl font-extrabold text-white">15</span>
+                    </div>
+                    
+                    <div class="booking-option flex-shrink-0 w-20 h-24 rounded-2xl border-2 border-neon bg-neon/10 flex flex-col items-center justify-center cursor-pointer snap-center shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+                        <span class="text-neon text-xs font-semibold uppercase mb-1">Dom</span>
+                        <span class="text-2xl font-extrabold text-neon">16</span>
+                    </div>
+                    
+                    <div class="booking-option flex-shrink-0 w-20 h-24 rounded-2xl border-2 border-slate-700 bg-slate-900 flex flex-col items-center justify-center cursor-pointer snap-center transition hover:border-neon/50">
+                        <span class="text-slate-400 text-xs font-semibold uppercase mb-1">Lun</span>
+                        <span class="text-2xl font-extrabold text-white">17</span>
+                    </div>
+
+                    <div class="booking-option flex-shrink-0 w-20 h-24 rounded-2xl border-2 border-slate-700 bg-slate-900 flex flex-col items-center justify-center cursor-pointer snap-center transition hover:border-neon/50">
+                        <span class="text-slate-400 text-xs font-semibold uppercase mb-1">Mar</span>
+                        <span class="text-2xl font-extrabold text-white">18</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-lg font-bold text-white mb-4">2. Orario di arrivo</h3>
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="booking-option border border-slate-700 bg-slate-900 py-3 rounded-xl text-center text-slate-300 font-semibold cursor-pointer hover:border-neon transition">09:00</div>
+                    <div class="booking-option border border-slate-700 bg-slate-900 py-3 rounded-xl text-center text-slate-300 font-semibold cursor-pointer hover:border-neon transition opacity-50 cursor-not-allowed">10:00</div>
+                    <div class="booking-option border-2 border-neon bg-neon/10 py-3 rounded-xl text-center text-neon font-bold shadow-[0_0_10px_rgba(34,211,238,0.15)] cursor-pointer">11:00</div>
+                    <div class="booking-option border border-slate-700 bg-slate-900 py-3 rounded-xl text-center text-slate-300 font-semibold cursor-pointer hover:border-neon transition">14:00</div>
+                    <div class="booking-option border border-slate-700 bg-slate-900 py-3 rounded-xl text-center text-slate-300 font-semibold cursor-pointer hover:border-neon transition">15:00</div>
+                    <div class="booking-option border border-slate-700 bg-slate-900 py-3 rounded-xl text-center text-slate-300 font-semibold cursor-pointer hover:border-neon transition">16:00</div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-lg font-bold text-white mb-4">3. Autolavaggio</h3>
+                <div class="space-y-3">
+                    <div class="border-2 border-neon bg-slate-900 p-4 rounded-2xl cursor-pointer shadow-[0_0_15px_rgba(34,211,238,0.1)] relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-neon text-dark text-[10px] font-bold px-2 py-1 rounded-bl-lg">SCELTO</div>
+                        <h4 class="font-bold text-white">WashPoint Prati</h4>
+                        <p class="text-sm text-slate-400 mt-1"><i class="fas fa-map-marker-alt text-neon mr-1"></i> Via Cola di Rienzo, 2 km</p>
+                    </div>
+                    
+                    <div class="border border-slate-700 bg-slate-900 p-4 rounded-2xl cursor-pointer hover:border-neon/50 transition">
+                        <h4 class="font-bold text-white">EcoWash Eur</h4>
+                        <p class="text-sm text-slate-400 mt-1"><i class="fas fa-map-marker-alt text-slate-500 mr-1"></i> Viale Europa, 8 km</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <div class="fixed bottom-0 left-0 w-full bg-slate-900/90 backdrop-blur-md border-t border-slate-800 p-4 z-50">
+            <div class="max-w-xl mx-auto">
+                <button class="w-full bg-neon text-dark font-extrabold py-4 rounded-xl shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:bg-white transition flex items-center justify-center gap-2 text-lg">
+                    <i class="fas fa-check-circle"></i> Conferma Prenotazione
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="settings-view" class="hidden min-h-screen bg-dark pb-24">
+        
+        <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
+            <nav class="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
+                <button id="back-from-settings-btn" class="text-slate-400 hover:text-white transition w-10 h-10 flex items-center justify-start">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </button>
+                <h2 class="text-xl font-bold text-white">Il Mio Profilo</h2>
+                <div class="w-10"></div> </nav>
+        </header>
+
+        <main class="max-w-2xl mx-auto px-6 py-8">
+            
+            <div class="mb-10">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">Dati Personali</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs text-slate-500 mb-1">Nome e Cognome</label>
+                        <div class="bg-slate-900 border border-slate-700 px-4 py-3 rounded-xl text-white font-medium flex justify-between items-center">
+                            Mario Rossi <i class="fas fa-pen text-slate-500 hover:text-neon cursor-pointer transition text-sm"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-500 mb-1">Email (Non modificabile)</label>
+                        <div class="bg-slate-900/50 border border-slate-800 px-4 py-3 rounded-xl text-slate-400 font-medium">
+                            mario.rossi@email.com
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-10">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">Il Tuo Veicolo</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs text-slate-500 mb-1">Targa</label>
+                        <div class="bg-slate-900 border border-slate-700 px-4 py-3 rounded-xl text-white font-mono font-bold tracking-widest flex justify-between items-center uppercase">
+                            AB 123 CD <i class="fas fa-pen text-slate-500 hover:text-neon cursor-pointer transition text-sm"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-500 mb-1">Modello</label>
+                        <div class="bg-slate-900 border border-slate-700 px-4 py-3 rounded-xl text-white font-medium flex justify-between items-center">
+                            Fiat 500X <i class="fas fa-pen text-slate-500 hover:text-neon cursor-pointer transition text-sm"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-10">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">Gestione Abbonamento</h3>
+                <div class="bg-slate-900 border border-slate-700 p-5 rounded-2xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            <span class="text-neon font-bold text-lg">Piano SMART</span>
+                            <p class="text-xs text-slate-400 mt-1">Attivo • Rinnovo: 12 Maggio 2026</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-white font-extrabold text-xl">€24,90</span>
+                            <span class="text-xs text-slate-500 block">/mese</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-slate-800 text-white font-bold py-3 rounded-xl hover:bg-slate-700 transition border border-slate-600 text-sm">
+                        Gestisci Metodo di Pagamento
+                    </button>
+                    <button class="w-full text-red-400 hover:text-red-300 transition text-xs font-semibold mt-4 underline text-center block">
+                        Annulla Abbonamento
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-6 border-t border-slate-800">
+                <button id="settings-logout-btn" class="w-full bg-red-500/10 border border-red-500/20 text-red-500 font-bold py-4 rounded-xl hover:bg-red-500/20 transition flex items-center justify-center gap-2">
+                    <i class="fas fa-sign-out-alt"></i> Esci dall'account
+                </button>
             </div>
 
         </main>
