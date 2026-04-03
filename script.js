@@ -146,6 +146,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     closeBtn.addEventListener('click', closeModal);
 
+    // --- LOGICA SPA: SIMULAZIONE ACCESSO E TRANSIZIONE ALLA DASHBOARD ---
+    authSubmitBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Evita il ricaricamento della pagina
+        
+        // 1. Chiude il Modal con l'animazione
+        closeModal();
+
+        // 2. Aspetta che il modal sia svanito, poi cambia view
+        setTimeout(() => {
+            // Nasconde la Landing Page
+            document.getElementById('landing-view').classList.add('hidden');
+            
+            // Mostra la Dashboard
+            document.getElementById('dashboard-view').classList.remove('hidden');
+            
+            // Forza lo scroll in alto per non far atterrare l'utente a metà pagina
+            window.scrollTo(0, 0);
+        }, 300); // 300ms corrispondono al tempo della transizione CSS del modal
+    });
+
     // Chiudi se si clicca fuori dal riquadro
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
@@ -173,4 +193,34 @@ document.addEventListener('DOMContentLoaded', () => {
             nameField.classList.remove('hidden'); // Mostra il campo Nome
         }
     });
+});
+
+
+// --- LOGICA LOGOUT: RITORNO ALLA LANDING PAGE ---
+document.addEventListener('DOMContentLoaded', () => {
+    const logoutBtn = document.getElementById('logout-btn');
+    const landingView = document.getElementById('landing-view');
+    const dashboardView = document.getElementById('dashboard-view');
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            // 1. Nasconde la Dashboard
+            dashboardView.classList.add('hidden');
+            
+            // 2. Mostra la Landing Page
+            landingView.classList.remove('hidden');
+            
+            // 3. Aggiunge l'effetto dissolvenza per un rientro morbido
+            landingView.classList.add('fade-in');
+            
+            // 4. Riporta lo scroll in cima per permettere all'utente 
+            // di rivedere l'animazione del titolo se ricarica
+            window.scrollTo(0, 0);
+
+            // Opzionale: Rimuove la classe fade-in dopo l'uso per poterla riutilizzare
+            setTimeout(() => {
+                landingView.classList.remove('fade-in');
+            }, 500);
+        });
+    }
 });
